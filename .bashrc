@@ -24,7 +24,7 @@ weather() { curl wttr.in/"$1"; }
 alias myip = "curl icanhazip.com"
 
 ### plz: re-run the last command as root
-alias plz = "fc -l -1 | cut -d' ' -f2- | xargs sudo"
+alias plz="fc -l -1 | cut -d' ' -f2- | xargs sudo"
 
 ### update: update all of your packages!
 if [ uname -a | grep -i darwin == "darwin" ]; then
