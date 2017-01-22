@@ -23,8 +23,11 @@ weather() { curl wttr.in/"$1"; }
 ### myip: prints out your IP address. Handy to check if your VPN is on!
 alias myip="curl icanhazip.com"
 
-### plz: re-run the last command as root
+### plz: re-run the last command as root.
 alias plz="fc -l -1 | cut -d' ' -f2- | xargs sudo"
+
+### ls but better: add some color to your life.
+alias ls='ls --color=auto'
 
 ### update: update all of your packages!
 if [ uname -a | grep -i darwin == "darwin" ]; then
