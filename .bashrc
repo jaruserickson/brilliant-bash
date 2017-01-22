@@ -21,16 +21,16 @@
 weather() { curl wttr.in/"$1"; }
 
 ### myip: prints out your IP address. Handy to check if your VPN is on!
-alias myip = "curl icanhazip.com"
+alias myip="curl icanhazip.com"
 
 ### plz: re-run the last command as root
 alias plz="fc -l -1 | cut -d' ' -f2- | xargs sudo"
 
 ### update: update all of your packages!
 if [ uname -a | grep -i darwin == "darwin" ]; then
-  alias update = "homebrew update; homebrew upgrade --all; brew cleanup -s"
+  alias update="homebrew update; homebrew upgrade --all; brew cleanup -s"
 elif [ cat /proc/version | grep -i  == "arch" ]; then
-  alias update = "sudo pacman -Syyu"
+  alias update="sudo pacman -Syyu"
 else
   echo "I have no clue what OS you're using..."
 fi
