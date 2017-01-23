@@ -28,6 +28,10 @@ alias plz="fc -l -1 | cut -d' ' -f2- | xargs sudo"
 
 ### ls but better: add some color to your life.
 alias ls='ls --color=auto'
+alias lsm='ls -lAhG --color=auto'
+
+### a better clear
+alias cls='clear;lsm'
 
 ### update: update all of your packages!
 if [ uname -a | grep -i darwin == "darwin" ]; then
