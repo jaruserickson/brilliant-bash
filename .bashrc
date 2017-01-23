@@ -41,3 +41,24 @@ elif [ cat /proc/version | grep -i  == "arch" ]; then
 else
   echo "I have no clue what OS you're using..."
 fi
+
+### Go incognito, your commandline history won't be saved
+incognito() {
+  if [[ -z ${SHELL} ]]; then
+    echo "Could not determine shell. Using /bin/bash"
+    SHELL=bash
+  fi
+  
+  case "${SHELL}" in
+    *bash)
+      set -o history
+      ;;
+    *zsh)
+      HISTFILE=/dev/null
+      ;;
+    *)
+      echo "Shell not supported"
+      exit 2
+      ;;
+  esac
+}
