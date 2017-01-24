@@ -34,38 +34,24 @@ alias lsm='ls -lAhG --color=auto'
 alias cls='clear;lsm'
 
 ### update: update all of your packages!
-if [ uname -a | grep -i darwin == "darwin" ]; then
-  alias update="homebrew update; homebrew upgrade --all; brew cleanup -s"
-elif [ cat /proc/version | grep -i  == "arch" ]; then
-  alias update="sudo pacman -Syyu"
-else
-  echo "I have no clue what OS you're using..."
-fi
+alias update="sudo pacman -Syyu"
 
-### Go incognito, your commandline history won't be saved
+### incognito: no saving your command history!
 incognito() {
-  if [[ -z ${SHELL} ]]; then
-    echo "Could not determine shell. Using /bin/bash"
-    SHELL=bash
-  fi
-  
-  case "${SHELL}" in
-    *bash)
-      set -o history
-      ;;
-    *zsh)
-      HISTFILE=/dev/null
-      ;;
+  case $1 in
+    off)
+    set -o history;;
+    on)
+    set +o history;;
     *)
-      echo "Shell not supported"
-      exit 2
-      ;;
+    echo -e "USAGE:
+    incognito off - disable command history.
+    incognito on - enable command history."};;
   esac
 }
 
-### gpom: simplistic git push origin master alias
+### gpom: simplistic git push origin master alias.
 alias gpom='git push origin master'
 
-### restart: for zshrc shells or other fun shells, gives quick access to a 
-### fresh instance
-alias restart="source ~/.zshrc"
+### restart: a quick refresh for your shell instance.
+alias restart="source ~/.bashrc"
