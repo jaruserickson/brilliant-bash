@@ -41,3 +41,11 @@ elif [ cat /proc/version | grep -i  == "arch" ]; then
 else
   echo "I have no clue what OS you're using..."
 fi
+
+### gpom: simplistic git push origin master alias
+alias gpom='git push origin master'
+
+
+### restart: for zshrc shells or other fun shells, gives quick access to a 
+### fresh instance
+alias restart="source ~/.zshrc"
