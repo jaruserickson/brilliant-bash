@@ -15,7 +15,7 @@
 ###############################################################################
 
 ### weather: pass your city or zip code, and it returns the weather!
-### Usage: weather cleveland
+### USAGE: weather cleveland
 ###              OR
 ###         weather 44106
 weather() { curl wttr.in/"$1"; }
@@ -28,9 +28,21 @@ alias plz="fc -l -1 | cut -d' ' -f2- | xargs sudo"
 
 ### ls but better: add some color to your life.
 alias ls='ls --color=auto'
-alias lsm='ls -lAhG --color=auto'
+alias lsm='ls -lAhG --color=auto'incognito() {
+  case $1 in
+    start)
+    set +o history;;
+    stop)
+    set -o history;;
+    *)
+    echo -e "USAGE:
+    incognito start - disable command history.
+    incognito stop - enable command history."};;
+  esac
+}
 
-### a better clear
+### cls: a better clear with listed directories.
+### DEPENDENCY - lsm (see above)
 alias cls='clear;lsm'
 
 ### update: update all of your packages!
@@ -39,14 +51,14 @@ alias update="sudo pacman -Syyu"
 ### incognito: no saving your command history!
 incognito() {
   case $1 in
-    off)
-    set -o history;;
-    on)
+    start)
     set +o history;;
+    stop)
+    set -o history;;
     *)
     echo -e "USAGE:
-    incognito off - disable command history.
-    incognito on - enable command history."};;
+    incognito start - disable command history.
+    incognito stop - enable command history."};;
   esac
 }
 
