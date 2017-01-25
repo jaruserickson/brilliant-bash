@@ -15,7 +15,7 @@
 ###############################################################################
 
 ### weather: pass your city or zip code, and it returns the weather!
-### USAGE - weather cleveland
+### USAGE -lsa weather cleveland
 ###              OR
 ###         weather 44106
 weather() { curl wttr.in/"$1"; }
@@ -28,18 +28,9 @@ alias plz="fc -l -1 | cut -d' ' -f2- | xargs sudo"
 
 ### ls but better: add some color to your life.
 alias ls='ls --color=auto'
-alias lsm='ls -lAhG --color=auto'incognito() {
-  case $1 in
-    start)
-    set +o history;;
-    stop)
-    set -o history;;
-    *)
-    echo -e "USAGE:
-    incognito start - disable command history.
-    incognito stop - enable command history."};;
-  esac
-}
+
+### a more verbose, colorful ls: see almost everything!
+alias lsm='ls -lAhG --color=auto'
 
 ### cls: a better clear with listed directories.
 ### DEPENDENCY - lsm (see above)
