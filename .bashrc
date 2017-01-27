@@ -15,9 +15,10 @@
 ###############################################################################
 
 ### weather: pass your city or zip code, and it returns the weather!
-### USAGE -lsa weather cleveland
-###              OR
+### USAGE - weather cleveland
+###         OR
 ###         weather 44106
+### WARNING - city and zip code args may yield inaccurate/different results.
 weather() { curl wttr.in/"$1"; }
 
 ### myip: prints out your IP address. Handy to check if your VPN is on!
