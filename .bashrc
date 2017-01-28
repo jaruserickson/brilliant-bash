@@ -33,6 +33,9 @@ alias ls='ls --color=auto'
 ### a more verbose, colorful ls: see almost everything!
 alias lsm='ls -lAhG --color=auto'
 
+### up: cd .. when you're too lazy to use the spacebar
+alias up='cd ..'
+
 ### cls: a better clear with listed directories.
 ### DEPENDENCY - lsm (see above)
 alias cls='clear;lsm'
