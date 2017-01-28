@@ -28,17 +28,17 @@ alias myip="curl icanhazip.com"
 alias plz="fc -l -1 | cut -d' ' -f2- | xargs sudo"
 
 ### ls but better: add some color to your life.
-alias ls='ls --color=auto'
+alias ls="ls --color=auto"
 
 ### a more verbose, colorful ls: see almost everything!
-alias lsm='ls -lAhG --color=auto'
+alias lsm="ls -lAhG --color=auto"
 
 ### up: cd .. when you're too lazy to use the spacebar
-alias up='cd ..'
+alias up="cd .."
 
 ### cls: a better clear with listed directories.
 ### DEPENDENCY - lsm (see above)
-alias cls='clear;lsm'
+alias cls="clear;lsm"
 
 ### update: update all of your packages!
 alias update="sudo pacman -Syyu"
@@ -58,7 +58,7 @@ incognito() {
 }
 
 ### gpom: simplistic git push origin master alias.
-alias gpom='git push origin master'
+alias gpom="git push origin master"
 
 ### restart: a quick refresh for your shell instance.
 alias restart="source ~/.bashrc"
