@@ -44,7 +44,11 @@ alias cls="clear;lsm"
 alias update="sudo pacman -Syyu"
 
 ### ports: lists all ports open and which programs are using them
+### TIP - add ports to your NOPASSWD list.
 alias ports="sudo netstat -tulpn"
+
+### space: gets space left on disk
+alias space="df -h"
 
 ### incognito: no saving your command history!
 incognito() {
@@ -54,13 +58,12 @@ incognito() {
     stop)
     set -o history;;
     *)
-    echo -e "USAGE:
-    incognito start - disable command history.
-    incognito stop - enable command history."};;
+    echo -e "USAGE: incognito start - disable command history.
+       incognito stop  - enable command history.";;
   esac
 }
 
-### gpom: simplistic git push origin master alias.
+### gpom: simplistic git push origin master .
 alias gpom="git push origin master"
 
 ### restart: a quick refresh for your shell instance.
