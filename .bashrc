@@ -59,9 +59,21 @@ incognito() {
     incognito stop - enable command history."};;
   esac
 }
-
 ### gpom: simplistic git push origin master alias.
 alias gpom="git push origin master"
 
 ### restart: a quick refresh for your shell instance.
 alias restart="source ~/.bashrc"
+
+### git commands: handful of git commands that I use
+alias add="git add"
+alias commit="git commit"
+alias push="git push"
+alias status="git status
+
+### ..: easily cd to the previous directory
+alias ..="cd .."
+
+### python: it's 2017. let's act like we live in it
+alias python="python3"
+alias pip="sudo pip3"
