@@ -40,11 +40,11 @@ alias up="cd .."
 ### DEPENDENCY - lsm (see above)
 alias cls="clear;lsm"
 
-### Gets space left on disk
-alias space="df -h"
-
 ### update: update all of your packages!
 alias update="sudo pacman -Syyu"
+
+### ports: lists all ports open and which programs are using them
+alias ports="sudo netstat -tulpn"
 
 ### incognito: no saving your command history!
 incognito() {
