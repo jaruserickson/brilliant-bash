@@ -40,6 +40,9 @@ alias up="cd .."
 ### DEPENDENCY - lsm (see above)
 alias cls="clear;lsm"
 
+### Gets space left on disk
+alias space="df -h"
+
 ### update: update all of your packages!
 alias update="sudo pacman -Syyu"
 
