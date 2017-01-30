@@ -85,3 +85,6 @@ alias gpom="git push origin master"
 
 ### restart: a quick refresh for your shell instance.
 alias restart="source ~/.bashrc"
+
+### push-please: force-pushing, but more polite
+alias push-please="git push --force-with-lease"
