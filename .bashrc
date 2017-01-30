@@ -14,6 +14,13 @@
 # All you can eat. Take whatever you want/need.
 ###############################################################################
 
+### aliased sudo: so you can use custom aliases as sudo
+### 
+### bash will normally stop recognizing aliases after it sees the
+### space after the command sudo, but if it sees an alias that 
+### ends in a space, it will attempt to detect another alias after.
+alias sudo="sudo "
+
 ### weather: pass your city or zip code, and it returns the weather!
 ### USAGE - weather cleveland
 ###         OR
