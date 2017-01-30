@@ -41,7 +41,17 @@ alias up="cd .."
 alias cls="clear;lsm"
 
 ### update: update all of your packages!
-alias update="sudo pacman -Syyu"
+if [ ! -z "$(which pacman)" ]; then
+    alias update="sudo pacman -Syyu"
+elif [ ! -z "$(which apt)" ]; then
+    alias update="sudo apt update && sudo apt upgrade"
+elif [ ! -z "$(which apt-get)" ]; then
+    alias update ="sudo apt-get update && sudo apt-get upgrade"
+elif [ ! -z "$(which dnf)" ]; then
+    alias update="sudo dnf upgrade"
+elif [ ! -z "$(which yum)" ]; then
+    alias update="su -c 'yum update'"
+fi
 
 ### ports: lists all ports open and which programs are using them
 ### TIP - add ports to your NOPASSWD list.
