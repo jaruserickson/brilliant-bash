@@ -16,15 +16,17 @@
 
 ### aliased sudo: so you can use custom aliases as sudo
 ### 
-### bash will normally stop recognizing aliases after it sees the
-### space after the command sudo, but if it sees an alias that 
+### NOTE - bash will normally stop recognizing aliases after it sees 
+### the space after the command sudo, but if it sees an alias that 
 ### ends in a space, it will attempt to detect another alias after.
 alias sudo="sudo "
 
 ### weather: pass your city or zip code, and it returns the weather!
+###
 ### USAGE - weather cleveland
 ###         OR
 ###         weather 44106
+###
 ### WARNING - city and zip code args may yield inaccurate/different results.
 weather() { curl wttr.in/"$1"; }
 
@@ -44,6 +46,7 @@ alias lsm="ls -lAhG --color=auto"
 alias up="cd .."
 
 ### cls: a better clear with listed directories.
+###
 ### DEPENDENCY - lsm (see above)
 alias cls="clear;lsm"
 
@@ -61,6 +64,7 @@ elif [ ! -z "$(which yum)" ]; then
 fi
 
 ### ports: lists all ports open and which programs are using them
+###
 ### TIP - add ports to your NOPASSWD list.
 alias ports="sudo netstat -tulpn"
 
@@ -80,11 +84,22 @@ incognito() {
   esac
 }
 
-### gpom: simplistic git push origin master .
+### gpom: simplistic git push origin master alias.
+
 alias gpom="git push origin master"
 
 ### restart: a quick refresh for your shell instance.
 alias restart="source ~/.bashrc"
 
-### push-please: force-pushing, but more polite
+### git commands: handful of git commands to make life easier.
+alias add="git add"
+alias commit="git commit"
+alias push="git push"
+alias status="git status
+
+### python/pip: it's 2017. Let's act like we live in it.
+# alias python="python3"
+# alias pip="sudo pip3"
+
+### push-please: force-pushing, but more polite!
 alias push-please="git push --force-with-lease"
