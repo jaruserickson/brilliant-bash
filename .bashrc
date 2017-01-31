@@ -15,9 +15,9 @@
 ###############################################################################
 
 ### aliased sudo: so you can use custom aliases as sudo
-### 
-### NOTE - bash will normally stop recognizing aliases after it sees 
-### the space after the command sudo, but if it sees an alias that 
+###
+### NOTE - bash will normally stop recognizing aliases after it sees
+### the space after the command sudo, but if it sees an alias that
 ### ends in a space, it will attempt to detect another alias after.
 alias sudo="sudo "
 
@@ -95,7 +95,7 @@ alias restart="source ~/.bashrc"
 alias add="git add"
 alias commit="git commit"
 alias push="git push"
-alias status="git status
+alias status="git status"
 
 ### python/pip: it's 2017. Let's act like we live in it.
 # alias python="python3"
