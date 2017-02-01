@@ -14,7 +14,7 @@
 # All you can eat. Take whatever you want/need.
 ###############################################################################
 
-### aliased sudo: so you can use custom aliases as sudo
+### sudo hack: so you can use custom aliases as sudo
 ###
 ### NOTE - bash will normally stop recognizing aliases after it sees
 ### the space after the command sudo, but if it sees an alias that
@@ -37,10 +37,16 @@ alias myip="curl icanhazip.com"
 alias plz="fc -l -1 | cut -d' ' -f2- | xargs sudo"
 
 ### ls but better: add some color to your life.
-alias ls="ls --color=auto"
+if ["$(uname -s)" == "Darwin"]; then # OS X sucks.
+  alias ls="ls -G"
+else
+  alias ls="ls --color=auto"
+
 
 ### a more verbose, colorful ls: see almost everything!
-alias lsm="ls -lAhG --color=auto"
+###
+### DEPENDENCY - ls colorization (see above)
+alias lsm="ls -lAhG"
 
 ### up: cd .. when you're too lazy to use the spacebar
 alias up="cd .."
@@ -52,21 +58,21 @@ alias cls="clear;lsm"
 
 ### update: update all of your packages!
 if [ ! -z "$(which pacman)" ]; then
-    alias update="sudo pacman -Syyu"
+  alias update="sudo pacman -Syyu"
 elif [ ! -z "$(which apt)" ]; then
-    alias update="sudo apt update && sudo apt upgrade"
+  alias update="sudo apt update && sudo apt upgrade"
 elif [ ! -z "$(which apt-get)" ]; then
-    alias update ="sudo apt-get update && sudo apt-get upgrade"
+  alias update ="sudo apt-get update && sudo apt-get upgrade"
 elif [ ! -z "$(which dnf)" ]; then
-    alias update="sudo dnf upgrade"
+  alias update="sudo dnf upgrade"
 elif [ ! -z "$(which yum)" ]; then
-    alias update="su -c 'yum update'"
+  alias update="su -c 'yum update'"
+elif [ ! -z "$(which brew)" ]; then
+  alias update="brew update && brew upgrade"
 fi
 
 ### ports: lists all ports open and which programs are using them
-###
-### TIP - add ports to your NOPASSWD list.
-alias ports="sudo netstat -tulpn"
+alias ports="netstat -tulpn"
 
 ### space: gets space left on disk
 alias space="df -h"
@@ -97,9 +103,9 @@ alias commit="git commit"
 alias push="git push"
 alias status="git status"
 
+### push-please: force-pushing, but more polite!
+alias push-please="git push --force-with-lease"
+
 ### python/pip: it's 2017. Let's act like we live in it.
 # alias python="python3"
 # alias pip="sudo pip3"
-
-### push-please: force-pushing, but more polite!
-alias push-please="git push --force-with-lease"
