@@ -14,19 +14,17 @@
 # All you can eat. Take whatever you want/need.
 ###############################################################################
 
-### sudo hack: so you can use custom aliases as sudo
+### aliased sudo: so you can use custom aliases as sudo
 ###
-### NOTE - bash will normally stop recognizing aliases after it sees
-### the space after the command sudo, but if it sees an alias that
+### bash will normally stop recognizing aliases after it sees the
+### space after the command sudo, but if it sees an alias that
 ### ends in a space, it will attempt to detect another alias after.
 alias sudo="sudo "
 
 ### weather: pass your city or zip code, and it returns the weather!
-###
 ### USAGE - weather cleveland
 ###         OR
 ###         weather 44106
-###
 ### WARNING - city and zip code args may yield inaccurate/different results.
 weather() { curl wttr.in/"$1"; }
 
@@ -36,43 +34,38 @@ alias myip="curl icanhazip.com"
 ### plz: re-run the last command as root.
 alias plz="fc -l -1 | cut -d' ' -f2- | xargs sudo"
 
-### ls but better: add some color to your life.
-if [ "$(uname -s)" == "Darwin" ]; then # OS X sucks.
-  alias ls="ls -G"
-else
-  alias ls="ls --color=auto"
-fi
+### add some color to your ls.
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[36m\]\h:\[\033[36;1m\]\W\[\033[m\]\ 👉  "
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+alias ls="ls -GFh"
 
 ### a more verbose, colorful ls: see almost everything!
-###
-### DEPENDENCY - ls colorization (see above)
 alias lsm="ls -lAhG"
 
 ### up: cd .. when you're too lazy to use the spacebar
 alias up="cd .."
 
 ### cls: a better clear with listed directories.
-###
 ### DEPENDENCY - lsm (see above)
 alias cls="clear;lsm"
 
 ### update: update all of your packages!
 if [ ! -z "$(which pacman)" ]; then
-  alias update="sudo pacman -Syyu"
+    alias update="sudo pacman -Syyu"
 elif [ ! -z "$(which apt)" ]; then
-  alias update="sudo apt update && sudo apt upgrade"
+    alias update="sudo apt update && sudo apt upgrade"
 elif [ ! -z "$(which apt-get)" ]; then
-  alias update ="sudo apt-get update && sudo apt-get upgrade"
+    alias update ="sudo apt-get update && sudo apt-get upgrade"
 elif [ ! -z "$(which dnf)" ]; then
-  alias update="sudo dnf upgrade"
+    alias update="sudo dnf upgrade"
 elif [ ! -z "$(which yum)" ]; then
-  alias update="su -c 'yum update'"
-elif [ ! -z "$(which brew)" ]; then
-  alias update="brew update && brew upgrade"
+    alias update="su -c 'yum update'"
 fi
 
 ### ports: lists all ports open and which programs are using them
-alias ports="netstat -tulpn"
+### TIP - add ports to your NOPASSWD list.
+alias ports="sudo netstat -tulpn"
 
 ### space: gets space left on disk
 alias space="df -h"
@@ -90,22 +83,26 @@ incognito() {
   esac
 }
 
-### gpom: simplistic git push origin master alias.
-
+### gpom: simplistic git push origin master .
 alias gpom="git push origin master"
 
 ### restart: a quick refresh for your shell instance.
 alias restart="source ~/.bashrc"
 
-### git commands: handful of git commands to make life easier.
-alias add="git add"
-alias commit="git commit"
-alias push="git push"
-alias status="git status"
 
-### push-please: force-pushing, but more polite!
-alias push-please="git push --force-with-lease"
+##ME OWN GOODIES
 
-### python/pip: it's 2017. Let's act like we live in it.
-# alias python="python3"
-# alias pip="sudo pip3"
+
+### cbase: change base of a number from base x to base y.
+### convention: [ cbase z x y ] converts z from base x to base y.
+function cbase() {
+    echo "obase=$3;$(($2#$1))" | bc
+}
+
+### tasks: a command that makes sense for top
+alias tasks=top
+
+### bonk bonk
+alias bonk='say "bonk"'
+
+alias wolf="ssh "
