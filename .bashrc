@@ -1,31 +1,7 @@
-###############################################################################
-#
-# 88                       88  88  88  88
-# 88                       ""  88  88  ""                             ,d
-# 88                           88  88                                 88
-# 88,dPPYba,   8b,dPPYba,  88  88  88  88  ,adPPYYba,  8b,dPPYba,   MM88MMM
-# 88P'    "8a  88P'   "Y8  88  88  88  88  ""     `Y8  88P'   `"8a    88
-# 88       d8  88          88  88  88  88  ,adPPPPP88  88       88    88
-# 88b,   ,a8"  88          88  88  88  88  88,    ,88  88       88    88,
-# 8Y"Ybbd8"'   88          88  88  88  88  `"8bbdP"Y8  88       88    "Y888
-#
-# A handful of bash aliases to strengthen the bond between you and your machine.
-#
-# All you can eat. Take whatever you want/need.
-###############################################################################
-
 ### aliased sudo: so you can use custom aliases as sudo
-###
-### bash will normally stop recognizing aliases after it sees the
-### space after the command sudo, but if it sees an alias that
-### ends in a space, it will attempt to detect another alias after.
 alias sudo="sudo "
 
 ### weather: pass your city or zip code, and it returns the weather!
-### USAGE - weather cleveland
-###         OR
-###         weather 44106
-### WARNING - city and zip code args may yield inaccurate/different results.
 weather() { curl wttr.in/"$1"; }
 
 ### myip: prints out your IP address. Handy to check if your VPN is on!
@@ -35,7 +11,15 @@ alias myip="curl icanhazip.com"
 alias plz="fc -l -1 | cut -d' ' -f2- | xargs sudo"
 
 ### add some color to your ls.
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[36m\]\h:\[\033[36;1m\]\W\[\033[m\]\ 👉  "
+### OLD PS1="\[\033[36m\]\u\[\033[m\]@\[\033[36m\]\h:\[\033[36;1m\]\W\[\033[m\⚡️ \]"
+
+emojis=(🐶 🐭 🐹 🐰 🐸 🐨 🐷 🐮 🐵 🐼 🐧 🐍 🐢 🐠 🐳 🐬 🍕 🍟 🇨🇦 ⚡️ 〽️)
+emoji='`echo ${emojis[$RANDOM % 21]}`'
+
+###[ $TERM_PROGRAM == "Apple_Terminal" ]
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[36m\]\h:\[\033[36;1m\]\W\[\033[m\] $emoji  "
+###export PS1="\[\033[30m\]\u\[\033[m\]@\[\033[90m\]\h:\[\033[90;1m\]\W\[\033[m\] $emoji  "
+
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 alias ls="ls -GFh"
@@ -90,7 +74,7 @@ alias gpom="git push origin master"
 alias restart="source ~/.bashrc"
 
 
-##ME OWN GOODIES
+## my stuff
 
 
 ### cbase: change base of a number from base x to base y.
@@ -99,10 +83,40 @@ function cbase() {
     echo "obase=$3;$(($2#$1))" | bc
 }
 
+### convert mp4s to web optimized gifs
+function gif() {
+    ffmpeg -i $1 -vf palettegen palette.png
+    ffmpeg -i $1 -i palette.png -lavfi paletteuse -r 24 -s 256x144 $2
+    rm palette.png
+}
+
+### ff: fast forward branch pull/push
+function ff() {
+    echo "Fast Forward v0.1"
+    echo "<---------PULLING----------"
+    git pull upstream $1
+    echo ""
+    echo "----------PUSHING--------->"
+    git push origin $1
+}
+
+### react native stuff
+alias native="react-native"
+alias ios="react-native run-ios --simulator 'iPhone X'"
+alias android="react-native run-android"
+
+### python env stuff
+alias leave="source deactivate"
+alias py2="source activate py2"
+alias py3="source activate py36"
+
+### toronto
+alias wttr="curl wttr.in/toronto"
+alias tasks=top
+
 ### tasks: a command that makes sense for top
 alias tasks=top
 
 ### bonk bonk
 alias bonk='say "bonk"'
 
-alias wolf="ssh "
