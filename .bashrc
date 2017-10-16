@@ -118,5 +118,6 @@ alias tasks=top
 alias tasks=top
 
 ### bonk bonk
-alias bonk='say "bonk"'
+alias bonk="tput bel"
+alias sbonk="say bonk"
 
